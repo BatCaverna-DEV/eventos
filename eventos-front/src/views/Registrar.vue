@@ -21,7 +21,7 @@ import {useRoute, useRouter} from "vue-router";
 
   async function verificarIp() {
     try{
-      const resposta = await fetch(`${API}/verificiar`)
+      const resposta = await fetch(`${API}/verificar`)
       let status = await resposta.json()
       return status.permitido
     }catch(err){

@@ -21,7 +21,6 @@ function ipPermitido(ip) {
 
     console.log('IP do cliente:', ip)
 
-    // 👇 AJUSTE ESSAS FAIXAS PARA A SUA REDE
     const redesPermitidas = [
         // '192.168.0.',   // exemplo
         // '192.168.15.',   // exemplo
@@ -36,7 +35,6 @@ function ipPermitido(ip) {
 // 🔹 Rota para verificar IP
 app.get('/verificar', (req, res) => {
     let ip = req.ip
-    console.log('IP: '+ip)
     if (ipPermitido(ip)) {
         return res.json({ permitido: true })
     } else {
