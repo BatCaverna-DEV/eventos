@@ -29,7 +29,6 @@ export default {
     atividades: async (req, res) =>{
 
         const atividades = await Atividade.findAll()
-        console.log(atividades)
         return res.status(200).json(atividades)
 
     },

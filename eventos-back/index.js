@@ -23,10 +23,10 @@ function ipPermitido(ip) {
 
     // 👇 AJUSTE ESSAS FAIXAS PARA A SUA REDE
     const redesPermitidas = [
-        '192.168.0.',   // exemplo
-        '192.168.15.',   // exemplo
-        '10.0.',        // exemplo
-        '10.10.',        // outro exemplo
+        // '192.168.0.',   // exemplo
+        // '192.168.15.',   // exemplo
+        // '10.0.',        // exemplo
+        // '10.10.',        // outro exemplo
         '179.179.'
     ]
 
@@ -36,6 +36,7 @@ function ipPermitido(ip) {
 // 🔹 Rota para verificar IP
 app.get('/verificar', (req, res) => {
     let ip = req.ip
+    console.log('IP: '+ip)
     if (ipPermitido(ip)) {
         return res.json({ permitido: true })
     } else {

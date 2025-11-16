@@ -4,9 +4,10 @@ import NavExt from "@/components/NavExt.vue";
 import {ref, onMounted} from "vue";
 
 const atividades = ref({})
+const API = import.meta.env.VITE_API_URL
 
 onMounted(async () => {
-  const resposta = await fetch('http://localhost:3100/presenca/atividades')
+  const resposta = await fetch(`${API}/presenca/atividades`)
   atividades.value = await resposta.json()
 })
 

@@ -8,15 +8,36 @@ import {useRoute, useRouter} from "vue-router";
   const router = useRouter()
   const id = route.params.id;
 
+  const permitido = ref(false)
+  const API = import.meta.env.VITE_API_URL
+
   const atividade = ref({})
   const presenca = ref({nome: '', matricula:'', turma:'', atividade_id:0})
 
   onMounted(async () => {
-    const resposta = await fetch('http://localhost:3100/presenca/atividade/'+id)
+    const resposta = await fetch(`${API}/presenca/atividade/`+id)
     atividade.value = await resposta.json()
   })
 
+  async function verificarIp() {
+    try{
+      const resposta = await fetch(`${API}/verificiar`)
+      let status = await resposta.json()
+      return status.permitido
+    }catch(err){
+      console.log(err)
+      return false
+    }
+  }
+
   async function salvar() {
+
+    const ok = await verificarIp()
+    if(!ok){
+      alert('Você precisa está na Rede Wi-Fi do IFMA!')
+      router.push('/')
+      return
+    }
 
     presenca.value.atividade_id = atividade.value.id
     const resposta = await fetch('http://localhost:3100/presenca/registrar', {
