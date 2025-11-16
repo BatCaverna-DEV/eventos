@@ -18,9 +18,6 @@ function ipPermitido(ip) {
     if (ip.startsWith('::ffff:')) {
         ip = ip.replace('::ffff:', '')
     }
-
-    console.log('IP do cliente:', ip)
-
     const redesPermitidas = [
         // '192.168.0.',   // exemplo
         // '192.168.15.',   // exemplo
@@ -36,8 +33,10 @@ function ipPermitido(ip) {
 app.get('/verificar', (req, res) => {
     let ip = req.ip
     if (ipPermitido(ip)) {
+        console.log(`${ip} - Permitido`)
         return res.json({ permitido: true })
     } else {
+        console.log(`${ip} - Não Permitido`)
         return res.json({ permitido: false })
     }
 })
