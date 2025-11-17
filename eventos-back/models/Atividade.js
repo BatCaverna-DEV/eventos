@@ -22,7 +22,7 @@ const Atividade = banco.sequelize.define("atividades", {
     },
 
     imagem:{
-        type: Sequelize.STRING(100),
+        type: Sequelize.TEXT('long'),
     }
 
 })

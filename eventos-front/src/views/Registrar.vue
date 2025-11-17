@@ -40,7 +40,7 @@ import {useRoute, useRouter} from "vue-router";
     }
 
     presenca.value.atividade_id = atividade.value.id
-    const resposta = await fetch('http://localhost:3100/presenca/registrar', {
+    const resposta = await fetch(`${API}/presenca/registrar`, {
       method: 'post',
       body: JSON.stringify(presenca.value),
       headers: {

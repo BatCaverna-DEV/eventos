@@ -17,7 +17,7 @@ onMounted(async () => {
   <NavExt></NavExt>
   <div class="container-sm d-flex flex-wrap gap-3 justify-content-between">
       <div class="card" style="width: 13rem;" v-for="atividade in atividades">
-        <img :src="`/src/assets/snct/${atividade.imagem}`" class="card-img-bottom" alt="">
+        <img :src="`${atividade.imagem}`" class="card-img-bottom" alt="">
         <div class="card-body">
           <a :href="`/registrar/${atividade.id}`" class="btn btn-primary">Registrar</a>
         </div>
