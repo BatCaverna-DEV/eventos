@@ -63,7 +63,7 @@ async function login() {
         <div class="row mt-3">
           <div class="col-sm">
             <label for="password">PASSWORD</label>
-            <input v-model="password" type="text" id="password" class="form-control">
+            <input v-model="password" type="password" id="password" class="form-control">
           </div>
         </div>
 
@@ -74,6 +74,9 @@ async function login() {
         </div>
 
       </form>
+      <p class="mt-3 text-center">
+        <a class="" href="/">Voltar</a>
+      </p>
     </div>
   </div>
 </template>

@@ -11,9 +11,9 @@
           Usuário
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li>
+            <RouterLink to="/logout" class="dropdown-item">Sair</RouterLink>
+          </li>
         </ul>
       </div>
     </div>

@@ -8,6 +8,17 @@ const secret = process.env.JWT_SECRET
 
 class UsuarioController{
 
+    salvar = async (req, res) => {
+        const user = req.user;
+        const salt = bcrypt.genSaltSync(10)
+        user.password = await bcrypt.hash(user.password, salt)
+        Usuario.create(user).then(usuario => {
+            res.status(201).json(usuario)
+        }).catch(err => {
+            res.status(500).json(err)
+        })
+    }
+
     login = async (req, res) => {
 
         try{
