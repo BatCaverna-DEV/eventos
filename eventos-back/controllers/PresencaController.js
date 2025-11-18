@@ -3,6 +3,17 @@ import Atividade from "../models/Atividade.js";
 
 export default {
 
+    index: async (req, res)=>{
+
+        const presencas = await Presenca.findAll({
+            include:{
+                model: Atividade,
+                as: 'atividade'
+            }
+        })
+        return res.status(200).json(presencas)
+    },
+
     salvar: async (req, res) =>{
 
         const presenca = req.body
