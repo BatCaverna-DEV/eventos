@@ -11,10 +11,13 @@ const route = useRoute()
 const id = route.params.id;
 
 const presencas = ref([])
+const atividade = ref({})
 
 async function listar(){
   const resposta = await apiFetch('/presenca')
+  const resposta2 = await apiFetch('/atividade/get/'+id)
   let lista = await resposta.json()
+  atividade.value = await resposta2.json()
   // 1. Filtre o array de presenças
   // presencas.value = presencas.value.filter(presenca => {
   //   return presenca.atividade.id === id;
@@ -41,6 +44,7 @@ onMounted(async () => {
       </div>
     </nav>
 
+    <h5>ATIVIDADE: {{atividade.descricao}}</h5>
     <h5>Quantidade: {{presencas.length}} pessoas</h5>
 
     <div class="row my-3 p-1">
