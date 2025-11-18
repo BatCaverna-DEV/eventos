@@ -14,6 +14,15 @@ onMounted(async () => {
   carregando.value = false
 })
 
+function formatarData(dataISO) {
+  const data = new Date(dataISO)
+
+  return data.toLocaleString('pt-BR', {
+    dateStyle: 'short',
+    timeStyle: 'short'
+  })
+}
+
 </script>
 
 <template>
@@ -25,30 +34,29 @@ onMounted(async () => {
     </div>
   </div>
 
-
-  <div v-if="!carregando" class="container-sm d-flex flex-wrap gap-3 justify-content-between">
-      <div class="card" style="width: 13rem;" v-for="atividade in atividades">
-
-        <div>
-          <img :src="`${atividade.imagem}`" class="card-img-bottom p-1" alt="">
-
-          <div v-if="atividade.status === 1" class="card-body text-center">
-            <a :href="`${url}registrar/${atividade.id}`" class="btn btn-primary">Registrar</a>
-          </div>
-
-          <div v-if="atividade.status === 2" class="card-body bg-body-secondary">
-            <h5 class="text-center text-danger">Encerrado</h5>
-          </div>
-
-          <div v-if="atividade.status === 0" class="card-body">
-            <h5 class="text-center text-success">Em breve...</h5>
-          </div>
-
+  <div v-if="!carregando" class="container">
+    <div class="row bg-body-secondary my-2 py-1" v-for="atividade in atividades">
+      <div class="col-4">
+        <img :src="atividade.imagem" class="w-100">
+      </div>
+      <div class="col-8">
+        <p class=""><strong>{{atividade.descricao}}</strong></p>
+        <p><strong>INÍCIO</strong>: {{formatarData(atividade.inicio)}} <br> <strong>FINAL</strong>: {{formatarData(atividade.final)}}</p>
+        <div v-if="atividade.status === 1" class="card-body">
+          <a :href="`${url}registrar/${atividade.id}`" class="btn btn-primary">Registrar</a>
         </div>
 
-      </div>
+        <div v-if="atividade.status === 2" class="card-body bg-body-secondary">
+          <h5 class="text-danger">Encerrado</h5>
+        </div>
 
+        <div v-if="atividade.status === 0" class="card-body">
+          <h5 class="text-success">Em breve...</h5>
+        </div>
+      </div>
+    </div>
   </div>
+
 </template>
 
 <style scoped>

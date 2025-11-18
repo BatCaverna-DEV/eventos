@@ -3,10 +3,14 @@
 import NavBar from "@/components/NavBar.vue";
 import {ref, onMounted} from "vue";
 import {apiFetch} from "@/services/http.js";
+import {getUser} from "@/services/user.js";
 
 const atividades = ref([])
 let processando = ref(false)
 let carregando = ref(true)
+
+const playload = getUser()
+const user = ref({nome: playload.nome})
 
 async function carregarAtividades() {
   const resposta = await apiFetch("/atividade")
@@ -84,6 +88,7 @@ function formatarData(dataISO) {
   </div>
 
   <div v-if="!carregando" class="container">
+    <h4 class="my-3 bg-body-secondary p-3">Bem Vindo(a) {{user.nome}}</h4>
     <div class="row bg-body-secondary my-2 py-1" v-for="atividade in atividades">
       <div class="col-4">
         <img :src="atividade.imagem" class="w-100">
