@@ -7,6 +7,11 @@ export default {
 
         const presenca = req.body
 
+        const atividade = await Atividade.findByPk(presenca.atividade_id);
+        if(atividade.status != 1){
+            return res.status(500).send({message: 'Atividade não disponível!'})
+        }
+
         const existe = await Presenca.findOne({
             where: {
                 matricula: presenca.matricula,

@@ -28,11 +28,26 @@ onMounted(async () => {
 
   <div v-if="!carregando" class="container-sm d-flex flex-wrap gap-3 justify-content-between">
       <div class="card" style="width: 13rem;" v-for="atividade in atividades">
-        <img :src="`${atividade.imagem}`" class="card-img-bottom" alt="">
-        <div class="card-body">
-          <a :href="`${url}registrar/${atividade.id}`" class="btn btn-primary">Registrar</a>
+
+        <div>
+          <img :src="`${atividade.imagem}`" class="card-img-bottom p-1" alt="">
+
+          <div v-if="atividade.status === 1" class="card-body text-center">
+            <a :href="`${url}registrar/${atividade.id}`" class="btn btn-primary">Registrar</a>
+          </div>
+
+          <div v-if="atividade.status === 2" class="card-body bg-body-secondary">
+            <h5 class="text-center text-danger">Encerrado</h5>
+          </div>
+
+          <div v-if="atividade.status === 0" class="card-body">
+            <h5 class="text-center text-success">Em breve...</h5>
+          </div>
+
         </div>
+
       </div>
+
   </div>
 </template>
 

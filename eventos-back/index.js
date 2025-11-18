@@ -49,4 +49,10 @@ app.get('/', (req, res) => {
 import presenca from './routes/presenca.js'
 app.use('/presenca', presenca)
 
+import usuario from './routes/usuario.js'
+app.use('/usuario', usuario)
+
+import atividade from './routes/atividade.js'
+app.use('/atividade', atividade)
+
 app.listen(port, () => {console.log(`Servidor em http://localhost:${port}`)})

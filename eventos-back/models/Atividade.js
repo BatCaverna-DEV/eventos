@@ -10,19 +10,22 @@ const Atividade = banco.sequelize.define("atividades", {
     },
 
     descricao: {
-        type: Sequelize.STRING(100),
+        type: banco.Sequelize.STRING(100),
     },
 
     inicio: {
-        type: Sequelize.DATE,
+        type: banco.Sequelize.DATE,
     },
 
     final: {
-        type: Sequelize.DATE,
+        type: banco.Sequelize.DATE,
     },
 
     imagem:{
-        type: Sequelize.TEXT('long'),
+        type: banco.Sequelize.TEXT('long'),
+    },
+    status:{
+        type: banco.Sequelize.INTEGER
     }
 
 })
