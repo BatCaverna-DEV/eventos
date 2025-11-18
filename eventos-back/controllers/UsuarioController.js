@@ -9,7 +9,7 @@ const secret = process.env.JWT_SECRET
 class UsuarioController{
 
     salvar = async (req, res) => {
-        const user = req.user;
+        const user = req.body;
         const salt = bcrypt.genSaltSync(10)
         user.password = await bcrypt.hash(user.password, salt)
         Usuario.create(user).then(usuario => {
