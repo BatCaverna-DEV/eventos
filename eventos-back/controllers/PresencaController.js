@@ -12,7 +12,8 @@ export default {
                 attributes:{
                     exclude:['imagem']
                 }
-            }
+            },
+            order:[['nome', 'ASC']],
         })
         return res.status(200).json(presencas)
     },

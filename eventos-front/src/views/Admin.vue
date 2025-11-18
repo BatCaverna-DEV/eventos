@@ -88,7 +88,13 @@ function formatarData(dataISO) {
   </div>
 
   <div v-if="!carregando" class="container">
-    <h4 class="my-3 bg-body-secondary p-3">Bem Vindo(a) {{user.nome}}</h4>
+
+    <div class="d-flex p-2 m-0 justify-content-between bg-body-secondary">
+      <h4 class="">Bem Vindo(a) {{user.nome}}</h4>
+      <RouterLink class="btn btn-primary" to="/lista">Listas</RouterLink>
+    </div>
+
+
     <div class="row bg-body-secondary my-2 py-1" v-for="atividade in atividades">
       <div class="col-4">
         <img :src="atividade.imagem" class="w-100">
@@ -99,8 +105,9 @@ function formatarData(dataISO) {
         <div v-if="!processando">
           <button v-if="atividade.status === 0" @click="abrir(atividade.id)" class="btn btn-primary">Abrir</button>
           <button v-if="atividade.status === 1" @click="fechar(atividade.id)" class="btn btn-warning">Fechar</button>
-          <button v-if="atividade.status === 1" @click="encerrar(atividade.id)" class="btn btn-danger mx-2">Encerrar</button>
+          <button v-if="atividade.status === 1" @click="encerrar(atividade.id)" class="btn btn-danger mx-1">Encerrar</button>
           <button v-if="atividade.status === 2" class="btn btn-secondary" disabled>Encerrado...</button>
+          <RouterLink :to="`/lista/${atividade.id}`" class="btn btn-secondary mx-1">Frequencia</RouterLink>
         </div>
         <h5 class="text-danger" v-if="processando">Processando...</h5>
       </div>

@@ -4,6 +4,7 @@ import Presenca from '../views/Presenca.vue'
 import Registrar from '../views/Registrar.vue'
 import Admin from '../views/Admin.vue'
 import NotFound from "@/views/NotFound.vue";
+import Lista from "@/views/Lista.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,12 @@ const router = createRouter({
             path: '/admin',
             name: 'admin',
             component: Admin,
+            meta:{requiresAuth:true},
+        },
+        {
+            path: '/lista/:id',
+            name: 'lista',
+            component: Lista,
             meta:{requiresAuth:true},
         },
         {
