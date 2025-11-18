@@ -11,6 +11,7 @@ const DB_DIALECT = process.env.DB_DIALECT
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
     host: DB_HOST,
     dialect: DB_DIALECT,
+    timezone: "-03:00",
 })
 
 sequelize.authenticate().then(function() {

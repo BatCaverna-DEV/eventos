@@ -18,6 +18,11 @@ const router = createRouter({
             component: Admin,
         },
         {
+            path: '/login',
+            name: 'login',
+            component: Login,
+        },
+        {
           path: '/registrar/:id',
           name: 'registrar',
           component: Registrar,

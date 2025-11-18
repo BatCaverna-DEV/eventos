@@ -3,7 +3,9 @@ import Atividade from "../models/Atividade.js";
 class AtividadeController{
 
     index = async (req, res) => {
-        const atividades = await Atividade.findAll()
+        const atividades = await Atividade.findAll({
+            order:[['inicio', 'ASC']],
+        })
         res.status(200).json(atividades)
     }
 
@@ -22,10 +24,20 @@ class AtividadeController{
 
         const atividade = await Atividade.findByPk(id)
 
-        await atividade.update({status: 2})
+        await atividade.update({status: 0})
 
         return res.status(200).json({message: 'Atividade fechada com sucesso!'})
     }
+
+    encerrar = async (req, res) => {
+        const id = req.params.id
+        const atividade = await Atividade.findByPk(id)
+
+        await atividade.update({status: 2})
+
+        return res.status(200).json({message: 'Atividade encerrada com sucesso!'})
+    }
+
 
 }
 
