@@ -8,7 +8,10 @@ export default {
         const presencas = await Presenca.findAll({
             include:{
                 model: Atividade,
-                as: 'atividade'
+                as: 'atividade',
+                attributes:{
+                    exclude:['imagem']
+                }
             }
         })
         return res.status(200).json(presencas)
