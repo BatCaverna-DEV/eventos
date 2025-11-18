@@ -23,7 +23,8 @@ function ipPermitido(ip) {
         // '192.168.15.',   // exemplo
         // '10.0.',        // exemplo
         // '10.10.',        // outro exemplo
-        '179.179.'
+        '179.179.',
+        '45.227.7.'
     ]
 
     return redesPermitidas.some(prefixo => ip.startsWith(prefixo))
