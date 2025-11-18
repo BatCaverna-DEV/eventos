@@ -6,7 +6,13 @@ class AtividadeController{
         const atividades = await Atividade.findAll({
             order:[['inicio', 'ASC']],
         })
-        res.status(200).json(atividades)
+        return res.status(200).json(atividades)
+    }
+
+    getAtividade = async (req, res) => {
+        const id = req.params.id;
+        const atividade = await Atividade.findByPk(id)
+        return res.status(200).json(atividade)
     }
 
     abrir = async (req, res) => {
