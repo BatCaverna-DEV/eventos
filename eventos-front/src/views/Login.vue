@@ -52,6 +52,12 @@ async function login() {
   <div class="card col-md-3 mx-auto m-1">
     <div class="card-body">
       <h4 class="text-center my-3">Acesso ao Sistema</h4>
+      <h5 class="text-center text-danger mb-4">Apenas para Comissão da SNCT</h5>
+
+      <div v-if="erro" class="alert alert-danger" role="alert">
+        <strong>ERRO: </strong> {{ erro }}
+      </div>
+
       <form @submit.prevent="login">
         <div class="row">
           <div class="col-sm">
