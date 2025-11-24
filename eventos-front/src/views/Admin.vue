@@ -91,15 +91,15 @@ function formatarData(dataISO) {
 
     <div class="d-flex p-2 m-0 justify-content-between bg-body-secondary">
       <h4 class="">Bem Vindo(a) {{user.nome}}</h4>
-      <RouterLink class="btn btn-primary" to="/lista">Listas</RouterLink>
+      <RouterLink class="btn btn-primary" to="/lista">Alunos</RouterLink>
     </div>
 
 
     <div class="row bg-body-secondary my-2 py-1" v-for="atividade in atividades">
-      <div class="col-4">
+      <div class="col-2">
         <img :src="atividade.imagem" class="w-100">
       </div>
-      <div class="col-8">
+      <div class="col-10">
         <p class="text-success"><strong>{{atividade.descricao}}</strong></p>
         <p><strong>INÍCIO</strong>: {{formatarData(atividade.inicio)}} <br> <strong>FINAL</strong>: {{formatarData(atividade.final)}}</p>
         <div v-if="!processando">
